@@ -1,18 +1,14 @@
 import React from 'react';
-import { Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import {connect} from 'react-redux';
 import '../App.css';
-import {fetchUsers} from '../actions/userActions';
-import { connect } from 'react-redux';
 import UserHomepage from './UserHomepage';
 import Homepage from './Homepage';
-import Navbar from './Navbar'
+import Navbar from './Navbar';
+import AccountCreation from './AccountCreation'
+import AccountLogin from './AccountLogin'
 
 class App extends React.Component {
-
-
-  componentDidMount() {
-    this.props.getUsers()
-  }
   
   render() {
 
@@ -24,29 +20,13 @@ class App extends React.Component {
         <div>
             <Route exact path="/" component={Homepage}/>
             <Route exact path="/home" render={ routerParams => <UserHomepage {...routerParams} users={this.props}/> }/>
-
+            <Route exact path="/signup" component={AccountCreation}/>
+            <Route exact path="/login" component={AccountLogin}/>
+            <Route exact path="/welcome" component={UserHomepage}/>
         </div>
       </Router>
     )
   }
 }
 
-const mapState = (state) => {
-  return {
-    users: state.users
-  }
-}
-
-const mapDispatch = dispatch => {
-  return {
-    getUsers: () => {
-      dispatch(fetchUsers())
-    }
-  }
-}
-
-
-export default connect(
-  mapState,
-  mapDispatch
-)(App);
+export default connect()(App);

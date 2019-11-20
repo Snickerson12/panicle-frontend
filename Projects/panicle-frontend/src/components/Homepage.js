@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeInfo from './HomeInfo';
 import image from '../img/homepage-info.jpg';
+import { Button } from 'semantic-ui-react';
 
 const Homepage = () => {
 
@@ -22,7 +23,9 @@ const Homepage = () => {
                 </div>
             </div>
             <div className="bottom-sign-up">
-                <button>Create an Account</button>
+                <Button className="account-button" basic color='violet'>
+                    Create an Account
+                </Button>
             </div>
         </div>
     )

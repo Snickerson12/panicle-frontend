@@ -7,6 +7,10 @@
   background-color: #83ebed
 }
 
+.account-button {
+  height: 5vh;
+}
+
 /* general home page before login */
 
 .homepage-image {
@@ -66,6 +70,7 @@
   flex-direction: column;
   text-align: left;
   margin-left: 10%;
+  color: grey
 }
 
 .bottom-sign-up {
@@ -75,4 +80,13 @@
 
 }
 
+/* Account forms */
 
+.account-form {
+  width: 50%;
+  margin-left: 25%
+}
+
+.form-header {
+ text-align: center;
+}

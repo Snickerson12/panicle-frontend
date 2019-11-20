@@ -1,11 +1,11 @@
-import { FETCH_USERS } from "../actions/userActions";
+import { POST_USER } from "../actions/userActions";
 
-const initState = []
+const initState = {}
 
 const usersReducer = (state = initState, action) => {
     switch (action.type) {
-    case FETCH_USERS:
-        return action.users
+    case POST_USER:
+        return action.user
     default:
         return state;
     }
