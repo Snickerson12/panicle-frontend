@@ -2,21 +2,77 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.ui.secondary.pointing.menu {
+  height: 11vh;
+  background-color: #83ebed
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* general home page before login */
+
+.homepage-image {
+ height: 60vh;
+ background-image: linear-gradient(to right bottom, rgba(46, 49, 46, 0.8), rgba(36, 34, 36, 0.8)), url(./img/homepage-background.jpg);
+ background-size: cover;
+ background-position: top;
+ position: relative;
+ color: white;
+ font-family: 'Roboto', sans-serif;
+ font-size: 3rem;
+ text-align: center;
+ line-height: 60vh;
+ margin-bottom: 5vh;
+}
+
+.info-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.ui.items {
+  border: 2px solid black;
+  height: 20vh;
+  width: 20vw;
+  margin-top: 10%;
+}
+
+.users.icon {
+  align-items: center;
+}
+
+.ui.card {
+  margin: 0;
+}
+
+.container-content {
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+  width: 100%;
+  border: 1px solid grey;
+}
+
+.info-image {
+  display: inline-block;
+  margin-top: 3px 
+}
+
+.container-content {
+  display: flex;
+  align-items: center;
+}
+
+.info-data {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: left;
+  margin-left: 10%;
 }
 
-.App-link {
-  color: #09d3ac;
+.bottom-sign-up {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5vh
+
 }
+
+

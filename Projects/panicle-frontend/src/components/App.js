@@ -1,8 +1,11 @@
 import React from 'react';
+import { Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom';
 import '../App.css';
-import UserCard from './UserCard';
 import {fetchUsers} from '../actions/userActions';
 import { connect } from 'react-redux';
+import UserHomepage from './UserHomepage';
+import Homepage from './Homepage';
+import Navbar from './Navbar'
 
 class App extends React.Component {
 
@@ -13,13 +16,17 @@ class App extends React.Component {
   
   render() {
 
-    const userData = this.props.users.map(user => {
-      return <UserCard user={user}/>
-    })
      return(
-      <div>
-        {userData}
-      </div>
+       <Router>
+         <div>
+           <Navbar/>
+         </div>
+        <div>
+            <Route exact path="/" component={Homepage}/>
+            <Route exact path="/home" render={ routerParams => <UserHomepage {...routerParams} users={this.props}/> }/>
+
+        </div>
+      </Router>
     )
   }
 }
