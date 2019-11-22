@@ -1,10 +1,14 @@
 const API = 'http://localhost:3000/groups'
+const UG_API = 'http://localhost:3000/user_groups'
 
 export const POST_GROUP = 'POST_GROUP';
+export const POST_USER_GROUP = 'POST_USER_GROUP';
 
-export const postGroup = group => ({ type: POST_GROUP, group })
+export const postGroup = group => ({ type: POST_GROUP, group });
+export const postUserGroup = user_group => ({ type: POST_USER_GROUP, user_group })
 
-export const createGroup = (group) => {
+
+export const createGroup = (group, user) => {
     return async dispatch => {
         try {
             const resp = await fetch(API, {
@@ -17,7 +21,18 @@ export const createGroup = (group) => {
                 })
             })
             const data = await resp.json()
-            console.log(data)
+            const ug_resp = await fetch(UG_API, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user_id: user,
+                    group_id: data.group.id
+                })
+            })
+            let ug_data = await ug_resp.json()
+            dispatch(postUserGroup(ug_data))
             dispatch(postGroup(data))
 
         } catch (error) {

@@ -90,3 +90,11 @@
 .form-header {
  text-align: center;
 }
+
+.user-page-container {
+  display: grid;
+}
+
+.group-container {
+  width: 30vw
+}

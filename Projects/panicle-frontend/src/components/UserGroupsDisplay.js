@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, Image, Segment, Header, Button, Modal, Form } from 'semantic-ui-react';
+import { Grid, Segment, Header, Button, Modal, Form } from 'semantic-ui-react';
 import GroupCard from './GroupCard';
 import {createGroup} from '../actions/groupActions';
 
@@ -30,22 +30,20 @@ class UserGroupsDisplay extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault()
         const group = {name: this.state.name}
-        this.props.createGroup(group)
-        console.log(this.props.user.user)
+        const user = this.props.user.user.id
+        this.props.createGroup(group, user)
     }
 
-    // do I want to add users to the group table? or make an action to create a user_group and 
-    //send it the current user id and the created group id???
+    handleClose = (event) => {
+        event.preventDefault()
+        this.setState({
+            open: false
+        })
+    }
 
     render() {
-        // let groupData = []
-        // if (Object.keys(this.props.user).length !== 0 ) {
-        //     console.log(Object.keys(this.props.user).length, this.props.user)
-        //     groupData = this.props.user.user.groups.map(group => {
-        //         return <GroupCard group={group}/>
-        //     }) 
-        // } else {console.log('user error')}
-        
+    
+        console.log('group display props', this.props)
         return(
             <div>
                 {this.state.open && 
@@ -59,27 +57,18 @@ class UserGroupsDisplay extends React.Component {
                                 <input placeholder='name' name="name" onChange={this.handleChange} />
                             </Form.Field>
                             <Button type='submit'>Submit</Button>
+                            <Button onClick={this.handleClose}>Close</Button>
                         </Form>
                     </Modal.Description>                
                 </Modal>}
-                <Grid columns='equal'>
+                <Grid columns='equal' className="group-container">
                 <Grid.Row stretched>
                 <Grid.Column>
                     <Header as='h3' block className='form-header'>
                         Your Groups
                     </Header>
                     <Button className="account-button" basic color='violet' onClick={this.handleClick}>Create Group</Button>
-                    {/* {groupData} */}
-                </Grid.Column>
-                <Grid.Column width={6}>
-                    <Segment>
-                    <Image src='/images/wireframe/paragraph.png' />
-                    {/* {userData} */}
-                    </Segment>
-                </Grid.Column>
-                <Grid.Column>
-                    <Segment>1</Segment>
-                    <Segment>2</Segment>
+                    <GroupCard />
                 </Grid.Column>
                 </Grid.Row>
                 </Grid>
@@ -90,13 +79,14 @@ class UserGroupsDisplay extends React.Component {
 
 const mapState = (state) => {
     return {
+        group: state.group,
         user: state.user
     }
 }
 
 const mapDispatch = dispatch => {
     return {
-        createGroup: (group) => dispatch(createGroup(group))
+        createGroup: (group, user) => dispatch(createGroup(group, user)),
     }
 }
 

@@ -12,15 +12,15 @@ const GroupCard = (props) => {
 
     return(
         <Segment>
-            {props.group.name}
+            text
         </Segment>
-
     )
 }
 
 const mapState = (state) => {
     return {
-        user: state.user
+        user: state.user,
+        group: state.group
     }
 }
 
