@@ -10,10 +10,10 @@ const UserCard = (props) => {
     if(props.user.user !== undefined) {
         return(
             <div className="ui cards">
-                <Item>
+                <Item className='user-item'>
                     <Item.Image size='small' src={image} />
     
-                    <Item.Content>
+                    <Item.Content className="user-card-content">
                         <Item.Header>{props.user.user.username}</Item.Header>
                         <Item.Meta>
                         <span>{props.user.user.location}</span>

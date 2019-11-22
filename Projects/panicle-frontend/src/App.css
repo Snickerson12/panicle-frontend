@@ -98,3 +98,23 @@
 .group-container {
   width: 30vw
 }
+
+.user-item {
+ display: flex
+}
+
+.user-card-content {
+  margin-top: 10vh;
+  margin-left: 5vw
+}
+
+.settings-button {
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+}
+
+.settings-text-area {
+  width: 50vw;
+  height: 10vh
+}

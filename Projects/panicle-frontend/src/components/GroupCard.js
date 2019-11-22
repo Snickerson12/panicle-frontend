@@ -20,7 +20,8 @@ const GroupCard = (props) => {
 const mapState = (state) => {
     return {
         user: state.user,
-        group: state.group
+        group: state.group,
+        user_group: state.user_group
     }
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import UserGroupsDisplay from './UserGroupsDisplay';
 import UserCard from './UserCard';
-import { Grid, Segment} from 'semantic-ui-react';
+import { Grid, Segment, Button} from 'semantic-ui-react';
 
 
 
@@ -18,6 +18,11 @@ class UserHomepage extends React.Component {
         this.setState({
             isFetching: false
         })
+    }
+
+    handleSettings = (event) => {
+        event.preventDefault();
+        this.props.history.push('./settings')
     }
 
  render() {
@@ -41,6 +46,7 @@ class UserHomepage extends React.Component {
                             </Grid.Column>
                             </Grid.Row>
                         </Grid>
+                        <Button className="settings-button" basic color='violet' onClick={this.handleSettings}>Settings</Button>
                     </div>
                  )
              }

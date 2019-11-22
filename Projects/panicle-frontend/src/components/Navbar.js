@@ -22,6 +22,11 @@ class Navbar extends React.Component {
         this.props.history.push('/')
     }
 
+    handleDirect = (event) => {
+        event.preventDefault()
+        this.props.history.push('/welcome')
+    }
+
     render() {
         const { user } = this.props
         let loginButtons;
@@ -29,6 +34,7 @@ class Navbar extends React.Component {
             loginButtons = (
                 <div className="right menu">
                     <Button className="account-button" basic color='violet' onClick={this.handleLogout}>Logout</Button>
+                    <Button className="account-button" basic color='violet' onClick={this.handleDirect}>Your Account</Button>
                 </div>
             )
         } else {
