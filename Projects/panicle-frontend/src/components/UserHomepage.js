@@ -1,5 +1,6 @@
 import React from 'react';
-import UserCard from './UserCard';
+import { connect } from 'react-redux';
+import UserGroupsDisplay from './UserGroupsDisplay';
 
 
 const UserHomepage = (props) => {
@@ -11,10 +12,16 @@ const UserHomepage = (props) => {
 
     return(
         <div>
-            user homepage text
+            < UserGroupsDisplay/>
             {/* {userData} */}
         </div>
     )
 }
 
-export default UserHomepage
+const mapState = (state) => {
+    return {
+      user: state.user
+  }
+}
+
+export default connect(mapState)(UserHomepage)

@@ -30,6 +30,7 @@ class AccountCreation extends React.Component {
     }
 
     render() {
+    
         return (
             <div>
                 <Header as='h3' block className='form-header'>

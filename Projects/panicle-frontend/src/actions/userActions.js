@@ -40,6 +40,7 @@ export const getUser = (potentialUser) => {
                 body: JSON.stringify(potentialUser)
             })
             const data = await resp.json()
+            console.log(data)
             localStorage.setItem('token', data.jwt)
             dispatch(postUser(data))
 
@@ -48,3 +49,29 @@ export const getUser = (potentialUser) => {
         }
     }
 }
+
+export const loggedIn = () => {
+    return dispatch => {
+        const token = localStorage.getItem('token')
+        try {
+            fetch(authAPI, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(resp => resp.json())
+            .then(data => {
+                console.log(data)
+                dispatch(postUser(data))
+            })
+
+        } catch(error) {
+            console.error('Error fetching user', error)
+        }
+    }    
+}
+
+export const LOGOUT_USER = 'LOGOUT_USER';
+export const logoutUser = currentUser => ({ type: LOGOUT_USER, currentUser })
+

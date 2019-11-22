@@ -1,15 +1,22 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import {connect} from 'react-redux';
 import '../App.css';
 import UserHomepage from './UserHomepage';
 import Homepage from './Homepage';
 import Navbar from './Navbar';
-import AccountCreation from './AccountCreation'
-import AccountLogin from './AccountLogin'
+import AccountCreation from './AccountCreation';
+import AccountLogin from './AccountLogin';
+import { connect } from 'react-redux';
+import { loggedIn } from '../actions/userActions'
 
 class App extends React.Component {
-  
+
+  componentDidMount = () => {
+    if(localStorage.getItem('token')){
+      this.props.loggedIn();
+    }
+
+  }
   render() {
 
      return(
@@ -29,4 +36,16 @@ class App extends React.Component {
   }
 }
 
-export default connect()(App);
+const mapState = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    loggedIn: () => dispatch(loggedIn())
+  }
+}
+
+export default connect(mapState, mapDispatch)(App);
