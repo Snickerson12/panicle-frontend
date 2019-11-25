@@ -26,6 +26,7 @@ class UserHomepage extends React.Component {
     }
 
  render() {
+     console.log('user page props', this.props)
      const {isFetching} = this.state;
      return(
          <div> 
@@ -57,7 +58,8 @@ class UserHomepage extends React.Component {
 
 const mapState = (state) => {
     return {
-      user: state.user
+      user: state.user,
+      group: state.group
   }
 }
 

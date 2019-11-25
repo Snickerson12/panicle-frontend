@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, Segment, Header, Button, Modal, Form } from 'semantic-ui-react';
+import { Grid, Header, Button, Modal, Form } from 'semantic-ui-react';
 import GroupCard from './GroupCard';
-import {createGroup} from '../actions/groupActions';
+import { createGroup } from '../actions/groupActions';
 
 
 class UserGroupsDisplay extends React.Component {
@@ -42,8 +42,7 @@ class UserGroupsDisplay extends React.Component {
     }
 
     render() {
-    
-        console.log('group display props', this.props)
+        
         return(
             <div>
                 {this.state.open && 
@@ -86,7 +85,7 @@ const mapState = (state) => {
 
 const mapDispatch = dispatch => {
     return {
-        createGroup: (group, user) => dispatch(createGroup(group, user)),
+        createGroup: (group, user) => dispatch(createGroup(group, user))
     }
 }
 

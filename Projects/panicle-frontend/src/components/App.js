@@ -7,13 +7,12 @@ import Navbar from './Navbar';
 import AccountCreation from './AccountCreation';
 import AccountLogin from './AccountLogin';
 import Settings from './Settings';
+import GroupPage from './GroupPage';
 import { connect } from 'react-redux';
 import { loggedIn } from '../actions/userActions'
+import { getGroup } from '../actions/groupActions';
 
 class App extends React.Component {
-
-  // on login, fetch users, groups, and user_groups. State is only including group/user_group
-  // when they are being createds
 
   componentDidMount = () => {
     if(localStorage.getItem('token')){
@@ -35,6 +34,7 @@ class App extends React.Component {
             <Route exact path="/login" component={AccountLogin}/>
             <Route exact path="/welcome" component={UserHomepage}/>
             <Route exact path='/settings' component={Settings}/>
+            <Route exact path='/group/:id' component={GroupPage}/>
         </div>
       </Router>
     )
@@ -49,7 +49,8 @@ const mapState = (state) => {
 
 const mapDispatch = dispatch => {
   return {
-    loggedIn: () => dispatch(loggedIn())
+    loggedIn: () => dispatch(loggedIn()),
+    getGroup: () => dispatch(getGroup())
   }
 }
 

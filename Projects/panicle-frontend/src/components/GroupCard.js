@@ -1,28 +1,33 @@
 import React from 'react';
 import { Segment } from 'semantic-ui-react';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux';
+import { withRouter } from "react-router";
 
+class GroupCard extends React.Component {
 
-const GroupCard = (props) => {
-    console.log('group card', props)
-    
-    // const userData = props.users.map(user => {
-    //     return <UserCard user={user}/>
-    // })
+    handleClick = (event) => {
+        event.preventDefault()
+        const groupId = event.target.id
+        console.log('handleclick', this.props.group)
+        this.props.history.push('/group/'+ (groupId))
+    }
 
-    return(
-        <Segment>
-            text
-        </Segment>
-    )
+    render() {
+        console.log('group card props', this.props)
+        if(this.props.group) {
+            return  this.props.group.map(g => 
+              <Segment onClick={this.handleClick} id={g.id}>
+                 {g.name} 
+              </Segment>
+          )  
+        } else {return <div>Loading...</div>}
+    }
 }
 
 const mapState = (state) => {
     return {
-        user: state.user,
-        group: state.group,
-        user_group: state.user_group
+        group: state.group
     }
 }
 
-export default connect(mapState)(GroupCard)
+export default connect(mapState)(withRouter(GroupCard))

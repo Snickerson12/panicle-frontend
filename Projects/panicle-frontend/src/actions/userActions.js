@@ -1,3 +1,5 @@
+import {getGroup} from './groupActions'
+
 const API = 'http://localhost:3000'
 
 export const POST_USER = 'POST_USER';
@@ -29,7 +31,6 @@ export const createUser = (newUser) => {
 const authAPI = 'http://localhost:3000/auth'
 
 export const getUser = (potentialUser) => {
-    console.log(potentialUser)
     return async dispatch => {
         try {
             const resp = await fetch(authAPI, {
@@ -40,15 +41,14 @@ export const getUser = (potentialUser) => {
                 body: JSON.stringify(potentialUser)
             })
             const data = await resp.json()
-            console.log(data)
             localStorage.setItem('token', data.jwt)
             dispatch(postUser(data))
-
         } catch (error) {
             console.error('Error fetching', error)
         }
     }
 }
+
 
 export const loggedIn = () => {
     return dispatch => {
@@ -62,8 +62,10 @@ export const loggedIn = () => {
             })
             .then(resp => resp.json())
             .then(data => {
-                console.log(data)
+                console.log('loggin in', data)
                 dispatch(postUser(data))
+                const user = data.user.username
+                dispatch(getGroup(user))
             })
 
         } catch(error) {
