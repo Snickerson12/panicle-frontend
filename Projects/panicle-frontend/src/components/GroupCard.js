@@ -2,12 +2,14 @@ import React from 'react';
 import { Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
+import {getPost} from '../actions/postActions';
 
 class GroupCard extends React.Component {
 
     handleClick = (event) => {
         event.preventDefault()
         const groupId = event.target.id
+        this.props.getPost(groupId)
         this.props.history.push('/group/'+ (groupId))
     }
 
@@ -28,4 +30,10 @@ const mapState = (state) => {
     }
 }
 
-export default connect(mapState)(withRouter(GroupCard))
+const mapDispatch = dispatch => {
+    return {
+        getPost: (groupId) => dispatch(getPost(groupId))
+      }
+}
+
+export default connect(mapState, mapDispatch)(withRouter(GroupCard))

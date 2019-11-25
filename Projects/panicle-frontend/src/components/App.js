@@ -8,6 +8,7 @@ import AccountCreation from './AccountCreation';
 import AccountLogin from './AccountLogin';
 import Settings from './Settings';
 import GroupPage from './GroupPage';
+import NewPost from './NewPost';
 import { connect } from 'react-redux';
 import { loggedIn } from '../actions/userActions'
 import { getGroup } from '../actions/groupActions';
@@ -18,6 +19,7 @@ class App extends React.Component {
     if(localStorage.getItem('token')){
       this.props.loggedIn();
     } else {
+      
       console.log('componentdidmount', this.props)
     }
 
@@ -37,6 +39,7 @@ class App extends React.Component {
             <Route exact path="/welcome" component={UserHomepage}/>
             <Route exact path='/settings' component={Settings}/>
             <Route exact path='/group/:id' component={GroupPage}/>
+            <Route exact path='/newPost' component={NewPost}/>
         </div>
       </Router>
     )

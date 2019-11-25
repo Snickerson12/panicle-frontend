@@ -1,4 +1,4 @@
-import {getGroup} from './groupActions'
+import {getGroup} from './groupActions';
 
 const API = 'http://localhost:3000'
 
@@ -63,9 +63,8 @@ export const loggedIn = () => {
             const data = await resp.json()
             console.log('loggin in', data)
             dispatch(postUser(data))
-            const user = data.user.username
-            dispatch(getGroup(user))
-
+            const user = data.user
+            dispatch(getGroup(user.username))
         } catch(error) {
             console.error('Error fetching user', error)
         }
