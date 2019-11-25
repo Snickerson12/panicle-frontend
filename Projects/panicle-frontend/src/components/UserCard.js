@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Item, Image} from 'semantic-ui-react';
+import { Item } from 'semantic-ui-react';
 import image from '../img/default-photo.jpg';
 
 
 const UserCard = (props) => {
-    console.log(props.user.user)
 
     if(props.user.user !== undefined) {
         return(

@@ -51,22 +51,20 @@ export const getUser = (potentialUser) => {
 
 
 export const loggedIn = () => {
-    return dispatch => {
+    return async dispatch => {
         const token = localStorage.getItem('token')
         try {
-            fetch(authAPI, {
+            const resp = await fetch(authAPI, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             })
-            .then(resp => resp.json())
-            .then(data => {
-                console.log('loggin in', data)
-                dispatch(postUser(data))
-                const user = data.user.username
-                dispatch(getGroup(user))
-            })
+            const data = await resp.json()
+            console.log('loggin in', data)
+            dispatch(postUser(data))
+            const user = data.user.username
+            dispatch(getGroup(user))
 
         } catch(error) {
             console.error('Error fetching user', error)

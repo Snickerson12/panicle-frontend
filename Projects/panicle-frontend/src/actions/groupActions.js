@@ -22,7 +22,6 @@ export const createGroup = (group, user) => {
             })
             
             const data = await resp.json()
-            console.log(data)
             const ug_resp = await fetch(UG_API, {
                 method: 'POST',
                 headers: {
@@ -57,7 +56,6 @@ export const getGroup = (user) => {
                 })
                 return groupName == user
             })
-            console.log(filteredGroups)
             dispatch(fetchGroup(filteredGroups))
 
         } catch (error) {

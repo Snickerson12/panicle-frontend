@@ -118,3 +118,41 @@
   width: 50vw;
   height: 10vh
 }
+
+/* Group page */
+
+.group-content-container {
+  display: flex
+}
+
+.photo-header {
+  background: white;
+  text-align: center;
+}
+
+.photo-container {
+  width: 30vw;
+  height: 72vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 1%;
+}
+
+.photo-button {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.post-container {
+  height: 75vh;
+  overflow: scroll;
+  border: 1px solid grey; 
+}
+
+.post {
+  width: 65vw;
+  height: 20vh;
+  border-bottom: 1px solid grey;
+  padding: 2%
+}

@@ -26,7 +26,6 @@ class UserHomepage extends React.Component {
     }
 
  render() {
-     console.log('user page props', this.props)
      const {isFetching} = this.state;
      return(
          <div> 
@@ -42,8 +41,7 @@ class UserHomepage extends React.Component {
                                 </Segment>
                             </Grid.Column>
                             <Grid.Column>
-                                <Segment>1</Segment>
-                                <Segment>2</Segment>
+                                <Segment>Pending Invites</Segment>
                             </Grid.Column>
                             </Grid.Row>
                         </Grid>
