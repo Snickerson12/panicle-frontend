@@ -16,15 +16,19 @@ class GroupPage extends React.Component {
         this.props.getPost(groupId)
     }
 
+    handleView = (event) => {
+        const postId = event.target.id
+        this.props.history.push('/post/'+ (postId))
+    }
+
     renderPost = (p, index) => {
-        
         return (
             <Item className="post">
                 <Item.Content verticalAlign='middle'>
                     <Item.Header>post {index + 1}</Item.Header>
                     <Item.Description>{p.content}</Item.Description>
                     <Item.Extra>
-                    <Button floated='right'>Comment</Button>
+                    <Button floated='right' onClick={this.handleView} id={p.id}>View Post</Button>
                     </Item.Extra>
                 </Item.Content>
             </Item>

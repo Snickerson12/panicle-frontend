@@ -1,5 +1,4 @@
-import { CREATE_POST } from "../actions/postActions";
-import { FETCH_POSTS } from "../actions/postActions";
+import { CREATE_POST, FETCH_POSTS, DELETE_POST } from "../actions/postActions";
 
 const initState = []
 
@@ -9,6 +8,9 @@ const postReducer = (state = initState, action) => {
         return [...state, action.post]
     case FETCH_POSTS:
         return action.post
+    case DELETE_POST: 
+        const postId = action.post;
+        return state.filter(post => post.id !== postId);
     default:
         return state;
     }

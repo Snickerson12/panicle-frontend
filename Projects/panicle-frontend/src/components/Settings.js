@@ -32,12 +32,17 @@ class Settings extends React.Component {
         this.props.history.push('./welcome')
     }
 
+    handleClick = (event) => {
+        this.props.history.push('./welcome')
+    }
+
     render() {
         if (this.props.user.user !== undefined) {
             return(
                 <div>
                     <Header as='h3' block className='form-header'>
                         Settings
+                        <Button className="settings-back-button" basic color='violet' onClick={this.handleClick}>Back</Button>
                     </Header> 
                     <Form className="account-form" onSubmit={this.handleSubmit}>
                         <Form.Field>

@@ -42,7 +42,7 @@ class UserGroupsDisplay extends React.Component {
     }
 
     render() {
-        
+        console.log('pleeeeease', this.props)
         return(
             <div>
                 {this.state.open && 
@@ -78,7 +78,6 @@ class UserGroupsDisplay extends React.Component {
 
 const mapState = (state) => {
     return {
-        group: state.group,
         user: state.user
     }
 }

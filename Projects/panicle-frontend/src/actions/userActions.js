@@ -21,6 +21,8 @@ export const createUser = (newUser) => {
             const data = await resp.json()
             localStorage.setItem('token', data.jwt)
             dispatch(postUser(data))
+            const userGroups = data.user.username
+            dispatch(getGroup(userGroups))
 
         } catch (error) {
             console.error('Error fetching', error)
@@ -43,6 +45,8 @@ export const getUser = (potentialUser) => {
             const data = await resp.json()
             localStorage.setItem('token', data.jwt)
             dispatch(postUser(data))
+            const groupName = data.user.username
+            dispatch(getGroup(groupName))
         } catch (error) {
             console.error('Error fetching', error)
         }

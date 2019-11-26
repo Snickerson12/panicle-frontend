@@ -9,9 +9,9 @@ import AccountLogin from './AccountLogin';
 import Settings from './Settings';
 import GroupPage from './GroupPage';
 import NewPost from './NewPost';
+import ViewPost from './ViewPost';
 import { connect } from 'react-redux';
 import { loggedIn } from '../actions/userActions'
-import { getGroup } from '../actions/groupActions';
 
 class App extends React.Component {
 
@@ -19,7 +19,6 @@ class App extends React.Component {
     if(localStorage.getItem('token')){
       this.props.loggedIn();
     } else {
-      
       console.log('componentdidmount', this.props)
     }
 
@@ -40,6 +39,7 @@ class App extends React.Component {
             <Route exact path='/settings' component={Settings}/>
             <Route exact path='/group/:id' component={GroupPage}/>
             <Route exact path='/newPost' component={NewPost}/>
+            <Route exact path='/post/:id' component={ViewPost}/>
         </div>
       </Router>
     )
@@ -54,8 +54,7 @@ const mapState = (state) => {
 
 const mapDispatch = dispatch => {
   return {
-    loggedIn: () => dispatch(loggedIn()),
-    getGroup: () => dispatch(getGroup())
+    loggedIn: () => dispatch(loggedIn())
   }
 }
 
