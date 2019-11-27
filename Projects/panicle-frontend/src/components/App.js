@@ -18,9 +18,7 @@ class App extends React.Component {
   componentDidMount = () => {
     if(localStorage.getItem('token')){
       this.props.loggedIn();
-    } else {
-      console.log('componentdidmount', this.props)
-    }
+    } 
 
   }
   render() {

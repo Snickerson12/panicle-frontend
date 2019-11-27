@@ -48,7 +48,6 @@ class UserComment extends React.Component {
 
     render() {
         if(!this.props.comment == []) {
-            console.log('comment props', this.props.comment)
             return(
                 <div className='parent-comment-container'>
                     <Comment.Group className='comment-container'>

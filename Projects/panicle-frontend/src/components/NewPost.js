@@ -11,12 +11,12 @@ class NewPost extends React.Component {
         }
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault()
         const user = this.props.user.user.id
         const groupId = Object.values(this.props.group[0])[0]
         const postContent = {content: this.state.content, user_id: user, group_id: groupId}
-        this.props.newPost(postContent)
+        await this.props.newPost(postContent)
         this.props.history.push('./group/'+ `${groupId}`)
     }
 

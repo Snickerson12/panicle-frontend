@@ -8,12 +8,14 @@ const postReducer = (state = initState, action) => {
         return [...state, action.post]
     case FETCH_POSTS:
         return action.post
-    case DELETE_POST: 
+    case DELETE_POST:
         const postId = action.post;
-        return state.filter(post => post.id !== postId);
+        const newState = state.filter(post => post.id !== postId);
+        return [...state, newState]
     default:
         return state;
     }
 }
 
 export default postReducer
+

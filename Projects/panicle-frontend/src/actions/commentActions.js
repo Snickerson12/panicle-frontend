@@ -18,7 +18,6 @@ export const newComment = (comment) => {
                 })
             })
             const data = await resp.json()
-            console.log('create comment resp', data)
             dispatch(createComment(data.comment))
 
         } catch (error) {
@@ -31,12 +30,10 @@ export const FETCH_COMMENTS = 'FETCH_COMMENTS'
 export const fetchComments = comment => ({ type: FETCH_COMMENTS, comment})
 
 export const getComments = (postId) => {
-    console.log('get comment postId', postId)
     return async dispatch => {
         try {
             const resp = await fetch(API)
             const data = await resp.json()
-            console.log('get comment response data', data)
             const filteredComments = data.filter(comment => {
                 return comment.post_id === postId
             })

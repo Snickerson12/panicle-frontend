@@ -17,10 +17,10 @@ class ViewPost extends React.Component {
         this.props.history.push('/group/'+groupId)
     }
 
-    handleDelete = () => {
+    handleDelete = async () => {
         const post = this.props.post[0].id
         const groupId = Object.values(this.props.group[0])[0]
-        this.props.removePost(post)
+        await this.props.removePost(post)
         this.props.history.push('/group/'+groupId)
     }
 
@@ -29,7 +29,10 @@ class ViewPost extends React.Component {
             <div className='view-page-container'>
                 <div className="view-buttons">
                     <Button className="back-button" basic color='violet' onClick={this.handleClick} >Back</Button>
+                    { this.props.user.user.id === this.props.post[0].user_id 
+                        &&
                     <Button className="delete-button" basic color='violet' onClick={this.handleDelete}>Delete</Button>
+                    }
                 </div>
                 <Container className="selected-post-container">
                     <div className="post-content">
@@ -57,7 +60,8 @@ class ViewPost extends React.Component {
 const mapState = (state) => {
     return {
         post: state.post,
-        group: state.group    
+        group: state.group,
+        user: state.user
     }
 }
 

@@ -74,7 +74,7 @@ const mapState = (state) => {
 const mapDispatch = dispatch => {
     return {
         getPost: (groupId) => dispatch(getPost(groupId))
-      }
+    }
 }
 
 export default connect(mapState, mapDispatch)(GroupPage)

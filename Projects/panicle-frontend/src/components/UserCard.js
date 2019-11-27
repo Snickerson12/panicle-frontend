@@ -5,7 +5,6 @@ import image from '../img/default-photo.jpg';
 
 
 const UserCard = (props) => {
-    console.log(props.user.user)
     if(props.user.user !== undefined) {
         return(
             <div className="ui cards">

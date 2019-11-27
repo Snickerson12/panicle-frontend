@@ -32,6 +32,9 @@ class UserGroupsDisplay extends React.Component {
         const group = {name: this.state.name}
         const user = this.props.user.user.id
         this.props.createGroup(group, user)
+        this.setState({
+            open: false
+        })
     }
 
     handleClose = (event) => {
@@ -42,7 +45,6 @@ class UserGroupsDisplay extends React.Component {
     }
 
     render() {
-        console.log('pleeeeease', this.props)
         return(
             <div>
                 {this.state.open && 
@@ -67,7 +69,9 @@ class UserGroupsDisplay extends React.Component {
                         Your Groups
                     </Header>
                     <Button className="account-button" basic color='violet' onClick={this.handleClick}>Create Group</Button>
-                    <GroupCard />
+                    <div className='group-card'>
+                        <GroupCard />
+                    </div>
                 </Grid.Column>
                 </Grid.Row>
                 </Grid>

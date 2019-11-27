@@ -97,11 +97,17 @@
 }
 
 .group-container {
-  width: 30vw
+  width: 30vw;
+}
+
+.group-card {
+  height: 60vh;
+  overflow-y: scroll;
 }
 
 .user-item {
- display: flex
+ display: flex;
+ flex-grow: 0;
 }
 
 .user-card-content {

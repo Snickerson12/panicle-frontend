@@ -65,7 +65,6 @@ export const loggedIn = () => {
                 }
             })
             const data = await resp.json()
-            console.log('loggin in', data)
             dispatch(postUser(data))
             const user = data.user
             dispatch(getGroup(user.username))
