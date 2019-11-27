@@ -26,17 +26,25 @@ class NewPost extends React.Component {
         })
     }
 
+    handleClick = () => {
+        const groupId = Object.values(this.props.group[0])[0]
+        this.props.history.push('./group/'+ `${groupId}`)
+    }
+
     render() {
         return(
             <div>
-                <Header as='h3' block className='form-header'>Create a New Post</Header>
-                <Form className="account-form" onSubmit={this.handleSubmit}>
-                    <Form.Field onSubmit={this.handleSubmit}>
-                        <label>Post Content: </label>
-                        <textarea placeholder='Post' name="content" onChange={this.handleChange} />
-                    </Form.Field>
-                    <Button type='submit'>Submit</Button>
-                </Form> 
+                <Button className="settings-back-button" basic color='violet' onClick={this.handleClick}>Back</Button>
+                <div>
+                    <Header as='h3' block className='form-header'>Create a New Post</Header>
+                    <Form className="account-form" onSubmit={this.handleSubmit}>
+                        <Form.Field onSubmit={this.handleSubmit}>
+                            <label>Post Content: </label>
+                            <textarea placeholder='Post' name="content" onChange={this.handleChange} />
+                        </Form.Field>
+                        <Button type='submit'>Submit</Button>
+                    </Form> 
+                </div>
             </div>
         )
     }

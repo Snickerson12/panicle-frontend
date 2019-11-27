@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Header, Item, Button } from 'semantic-ui-react';
 import {getPost} from '../actions/postActions';
-
+import { withRouter } from "react-router";
 
 class GroupPage extends React.Component {
     
@@ -19,6 +19,12 @@ class GroupPage extends React.Component {
     handleView = (event) => {
         const postId = event.target.id
         this.props.history.push('/post/'+ (postId))
+    }
+
+    handlePhotosClick = () => {
+        const groupId = this.props.match.params.id
+        this.props.history.push(groupId + '/photos')
+        // localhost:3001/group/id/photos
     }
 
     renderPost = (p, index) => {
@@ -45,7 +51,7 @@ class GroupPage extends React.Component {
                     <div className="group-content-container">
                         <div className="photo-container"> 
                             <Header as='h3' block className='photo-header'> Photos </Header>
-                            <Button className="account-button" basic color='violet'> View Photos</Button>
+                            <Button className="account-button" basic color='violet' onClick={this.handlePhotosClick}> View Photos</Button>
                         </div>
 
                         <div className="post-container">
@@ -77,4 +83,4 @@ const mapDispatch = dispatch => {
     }
 }
 
-export default connect(mapState, mapDispatch)(GroupPage)
+export default connect(mapState, mapDispatch)(withRouter(GroupPage))

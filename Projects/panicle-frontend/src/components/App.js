@@ -11,6 +11,7 @@ import GroupPage from './GroupPage';
 import NewPost from './NewPost';
 import ViewPost from './ViewPost';
 import { connect } from 'react-redux';
+import PhotoPage from './PhotoPage';
 import { loggedIn } from '../actions/userActions'
 
 class App extends React.Component {
@@ -40,6 +41,7 @@ class App extends React.Component {
             <Route exact path='/group/:id' component={GroupPage}/>
             <Route exact path='/newPost' component={NewPost}/>
             <Route exact path='/post/:id' component={ViewPost}/>
+            <Route exact path='/group/:id/photos' component={PhotoPage}/>
         </div>
       </Router>
     )
