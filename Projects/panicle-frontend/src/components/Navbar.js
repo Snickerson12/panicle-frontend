@@ -2,7 +2,8 @@ import React from 'react';
 import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import { logoutUser } from '../actions/userActions'
+import { logoutUser } from '../actions/userActions';
+import {getGroup} from '../actions/groupActions'
 
 class Navbar extends React.Component {
 
@@ -22,8 +23,11 @@ class Navbar extends React.Component {
         this.props.history.push('/')
     }
 
-    handleDirect = (event) => {
+    handleDirect = async (event) => {
         event.preventDefault()
+        const user = this.props.user.user.username
+        console.log(user)
+        await this.props.getGroup(user)
         this.props.history.push('/welcome')
     }
 
@@ -60,13 +64,15 @@ class Navbar extends React.Component {
 
 const mapState = (state) => {
     return {
-        user: state.user
+        user: state.user,
+        group: state.group
     }
 }
 
 const mapDispatch = dispatch => {
     return {
-        logoutUser: (currentUser) => dispatch(logoutUser(currentUser))
+        logoutUser: (currentUser) => dispatch(logoutUser(currentUser)),
+        getGroup: (user) => dispatch(getGroup(user))
     }
 }
 

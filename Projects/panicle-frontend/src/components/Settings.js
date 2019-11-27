@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Header, Form } from 'semantic-ui-react';
-import {updateUser} from '../actions/userActions'
+import {updateUser, getUser} from '../actions/userActions'
 
 
 class Settings extends React.Component {
@@ -80,9 +80,9 @@ const mapState = (state) => {
 
 const mapDispatch = dispatch => {
     return {
-        updateUser: (initialUser, newUser) => {dispatch(updateUser(initialUser, newUser))
-        }
-    }
+        updateUser: (initialUser, newUser) => dispatch(updateUser(initialUser, newUser)),
+        getUser: (fetchedUser) => dispatch(getUser(fetchedUser))
+    } 
 }
 
 export default connect(mapState, mapDispatch)(Settings)

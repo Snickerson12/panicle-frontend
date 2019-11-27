@@ -3,6 +3,7 @@ import { Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import {getPost} from '../actions/postActions';
+import {getSingleGroup} from '../actions/groupActions';
 
 class GroupCard extends React.Component {
 
@@ -10,6 +11,7 @@ class GroupCard extends React.Component {
         event.preventDefault()
         const groupId = event.target.id
         this.props.getPost(groupId)
+        this.props.getSingleGroup(groupId)
         this.props.history.push('/group/'+ (groupId))
     }
 
@@ -32,7 +34,8 @@ const mapState = (state) => {
 
 const mapDispatch = dispatch => {
     return {
-        getPost: (groupId) => dispatch(getPost(groupId))
+        getPost: (groupId) => dispatch(getPost(groupId)),
+        getSingleGroup: (groupId) => dispatch(getSingleGroup(groupId))
       }
 }
 

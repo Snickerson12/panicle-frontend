@@ -63,3 +63,22 @@ export const getGroup = (user) => {
         }
     }
 }
+
+export const FETCH_SINGLE_GROUP = 'FETCH_SINGLE_GROUP'
+export const fetchSingleGroup = group => ({type: FETCH_SINGLE_GROUP, group})
+
+export const getSingleGroup = (groupId) => {
+    return async dispatch => {
+        try {
+           
+            const resp = await fetch(API)
+            const data = await resp.json()
+            const filteredGroups = data.filter(group => {
+                return group.id == groupId
+            })
+            dispatch(fetchSingleGroup(filteredGroups))
+        } catch (error) {
+            console.error('Error fetching', error)
+        }
+    }
+}

@@ -36,7 +36,7 @@ class GroupPage extends React.Component {
     }
 
     render() {
-
+        
         if(!this.props.group == []) {
             return this.props.group.map(g => 
                 <div>
