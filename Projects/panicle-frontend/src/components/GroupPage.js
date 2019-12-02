@@ -1,10 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Header, Item, Button } from 'semantic-ui-react';
+import { Header, Item, Button, Modal, Form } from 'semantic-ui-react';
 import {getPost} from '../actions/postActions';
 import { withRouter } from "react-router";
+import { createPendingUser } from '../actions/pendingUserActions';
 
 class GroupPage extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            email: ''
+        }
+    }
     
     handleClick = (event) => {
         event.preventDefault()
@@ -27,6 +34,19 @@ class GroupPage extends React.Component {
         // localhost:3001/group/id/photos
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault()
+        const groupId = this.props.match.params.id
+        const userEmail = this.state.email
+        this.props.createPendingUser(groupId, userEmail)
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
     renderPost = (p, index) => {
         return (
             <Item className="post">
@@ -46,7 +66,18 @@ class GroupPage extends React.Component {
         if(!this.props.group == []) {
             return this.props.group.map(g => 
                 <div>
-                    <Header as='h3' block className='form-header'>{g.name}</Header>
+                    <Header as='h3' block className='form-header'>{g.name}
+                        <Modal trigger={<Button className="invite-button" basic color='violet'>Invite</Button>}>
+                            <Modal.Header>Invite a Member</Modal.Header>
+                            <Form className="account-form" onSubmit={this.handleSubmit}>
+                            <Form.Field onSubmit={this.handleSubmit}>
+                                <label>Member email: </label>
+                                <input placeholder='name' name="email" onChange={this.handleChange} />
+                            </Form.Field>
+                            <Button type='submit'>Submit</Button>
+                            </Form>
+                        </Modal>
+                    </Header>
                     
                     <div className="group-content-container">
                         <div className="photo-container"> 
@@ -79,7 +110,8 @@ const mapState = (state) => {
 
 const mapDispatch = dispatch => {
     return {
-        getPost: (groupId) => dispatch(getPost(groupId))
+        getPost: (groupId) => dispatch(getPost(groupId)),
+        createPendingUser: (groupId, userEmail) => dispatch(createPendingUser(groupId, userEmail))
     }
 }
 

@@ -203,3 +203,7 @@
   justify-content: center;
   width: 100vw
 }
+
+.invite-button {
+  float: right
+}

@@ -9,6 +9,7 @@ class Settings extends React.Component {
         super()
         this.state = {
             username: '',
+            email: '',
             location: '',
             bio: ''
         }
@@ -18,6 +19,7 @@ class Settings extends React.Component {
         event.preventDefault()
         this.setState({
             username: this.props.user.user.username,
+            email: this.props.user.user.email,
             location: this.props.user.user.location,
             bio: this.props.user.user.bio,
             [event.target.name]: event.target.value
@@ -26,8 +28,8 @@ class Settings extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        const initialUser = {username: this.props.user.user.username, location: this.props.user.user.location, bio: this.props.user.user.bio}
-        const newUser = {username: this.state.username, location: this.state.location, bio: this.state.bio}
+        const initialUser = {username: this.props.user.user.username, email: this.props.user.user.email, location: this.props.user.user.location, bio: this.props.user.user.bio}
+        const newUser = {username: this.state.username, email: this.state.email, location: this.state.location, bio: this.state.bio}
         this.props.updateUser(initialUser, newUser)
         this.props.history.push('./welcome')
     }
@@ -48,6 +50,10 @@ class Settings extends React.Component {
                         <Form.Field>
                             <label>Username</label>
                             <input placeholder={this.props.user.user.username} name='username' onChange={this.handleChange} />
+                        </Form.Field>
+                        <Form.Field>
+                            <label>Email</label>
+                            <input placeholder={this.props.user.user.email} name='email' onChange={this.handleChange} />
                         </Form.Field>
                         <Form.Field>
                             <label>Location</label>

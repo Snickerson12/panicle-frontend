@@ -1,11 +1,10 @@
+import {postUserGroup} from './userGroupActions'
+
 const API = 'http://localhost:3000/groups'
 const UG_API = 'http://localhost:3000/user_groups'
 
 export const POST_GROUP = 'POST_GROUP';
-export const POST_USER_GROUP = 'POST_USER_GROUP';
-
 export const postGroup = group => ({ type: POST_GROUP, group });
-export const postUserGroup = user_group => ({ type: POST_USER_GROUP, user_group })
 
 
 export const createGroup = (group, user) => {
@@ -33,7 +32,9 @@ export const createGroup = (group, user) => {
                 })
             })
             let ug_data = await ug_resp.json()
-            dispatch(postUserGroup(ug_data))
+            console.log(ug_data)
+            dispatch(postUserGroup(ug_data.user_group))
+            console.log(data.group)
             dispatch(postGroup(data.group))
 
         } catch (error) {
@@ -56,6 +57,7 @@ export const getGroup = (user) => {
                 })
                 return groupName == user
             })
+            console.log(filteredGroups)
             dispatch(fetchGroup(filteredGroups))
 
         } catch (error) {

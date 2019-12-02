@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import UserGroupsDisplay from './UserGroupsDisplay';
 import UserCard from './UserCard';
 import { Grid, Segment, Button} from 'semantic-ui-react';
+import UserInvitesDisplay from './UserInvitesDisplay';
 
 
 
@@ -27,6 +28,7 @@ class UserHomepage extends React.Component {
 
  render() {
      const {isFetching} = this.state;
+     console.log(this.props)
      return(
          <div> 
              {
@@ -41,7 +43,7 @@ class UserHomepage extends React.Component {
                                 </Segment>
                             </Grid.Column>
                             <Grid.Column>
-                                <Segment>Pending Invites</Segment>
+                                <UserInvitesDisplay/>
                             </Grid.Column>
                             </Grid.Row>
                         </Grid>
@@ -57,7 +59,8 @@ class UserHomepage extends React.Component {
 const mapState = (state) => {
     return {
       user: state.user,
-      group: state.group
+      group: state.group,
+      pending_user_group: state.pending_user_group
   }
 }
 

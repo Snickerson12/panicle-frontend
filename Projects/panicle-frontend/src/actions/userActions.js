@@ -1,4 +1,6 @@
 import {getGroup} from './groupActions';
+import {getPendingUsers} from './pendingUserActions';
+import {getUserGroups} from './userGroupActions';
 
 const API = 'http://localhost:3000'
 
@@ -47,6 +49,8 @@ export const getUser = (potentialUser) => {
             dispatch(postUser(data))
             const groupName = data.user.username
             dispatch(getGroup(groupName))
+            const userId = data.user.id
+            dispatch(getPendingUsers(userId))
         } catch (error) {
             console.error('Error fetching', error)
         }
@@ -68,6 +72,9 @@ export const loggedIn = () => {
             dispatch(postUser(data))
             const user = data.user
             dispatch(getGroup(user.username))
+            const userId = data.user.id
+            dispatch(getPendingUsers(userId))
+            dispatch(getUserGroups(userId))
         } catch(error) {
             console.error('Error fetching user', error)
         }
@@ -100,5 +107,4 @@ export const updateUser = (initialUser, newUser) => {
             console.error('Error fetching', error)
         }
     }
-
 }
