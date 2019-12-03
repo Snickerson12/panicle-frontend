@@ -12,13 +12,14 @@ import NewPost from './NewPost';
 import ViewPost from './ViewPost';
 import { connect } from 'react-redux';
 import PhotoPage from './PhotoPage';
-import { loggedIn } from '../actions/userActions'
+import { loggedIn } from '../actions/userActions';
 
 class App extends React.Component {
 
   componentDidMount = () => {
     if(localStorage.getItem('token')){
       this.props.loggedIn();
+      console.log(this.props)
     } else {
       console.log('componentmounted', this.props)
     }

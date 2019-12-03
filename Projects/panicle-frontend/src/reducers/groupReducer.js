@@ -1,15 +1,18 @@
 import { POST_GROUP, FETCH_GROUP, FETCH_SINGLE_GROUP } from "../actions/groupActions";
 
-const initState = []
+const initState = {
+    group: [],
+    single_group: {}
+}
 
 const groupReducer = (state = initState, action) => {
     switch (action.type) {
     case POST_GROUP:
-        return [...state, action.group]
+        return {...state, group: [...state.group, action.group]}
     case FETCH_GROUP:
-        return action.group
+        return {...state, group: action.grßup}
     case FETCH_SINGLE_GROUP:
-        return action.group
+        return {...state, single_group: action.single_group}
     default:
         return state;
     }

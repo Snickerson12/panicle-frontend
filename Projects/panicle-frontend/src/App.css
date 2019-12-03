@@ -157,6 +157,10 @@
   display: flex;
 }
 
+.single-photo {
+  width: 20vw;
+}
+
 .post-container {
   height: 75vh;
   overflow: scroll;
@@ -206,4 +210,24 @@
 
 .invite-button {
   float: right
+}
+
+/* Photo page */
+
+.photo-button-container{
+  margin-bottom: 1%;
+  margin-top: 1%;
+  text-align: center;
+}
+
+.new-photo-button {
+  margin-bottom: 5%;
+}
+
+.photo-item {
+  height: 40vh;
+}
+
+.photo-caption {
+  width: 25vw;
 }

@@ -51,6 +51,7 @@ export const getUser = (potentialUser) => {
             dispatch(getGroup(groupName))
             const userId = data.user.id
             dispatch(getPendingUsers(userId))
+            dispatch(getUserGroups(userId))
         } catch (error) {
             console.error('Error fetching', error)
         }
@@ -72,6 +73,9 @@ export const loggedIn = () => {
             dispatch(postUser(data))
             const user = data.user
             dispatch(getGroup(user.username))
+            // if (this.props.match.path !== "/group/:id") {
+            //     dispatch(getGroup(user.username))
+            // } 
             const userId = data.user.id
             dispatch(getPendingUsers(userId))
             dispatch(getUserGroups(userId))

@@ -17,9 +17,8 @@ class GroupCard extends React.Component {
 
     render() {
         if(this.props) {
-            console.log('group card props', this.props.user_group)
             return  this.props.user_group.map(g => 
-              <Segment onClick={this.handleClick} id={g.id}>
+              <Segment onClick={this.handleClick} id={g.group_id}>
                  {g.group.name} 
               </Segment>
           )  
@@ -30,7 +29,8 @@ class GroupCard extends React.Component {
 const mapState = (state) => {
     return {
         group: state.group,
-        user_group: state.user_group
+        user_group: state.user_group,
+        user: state.user
     }
 }
 

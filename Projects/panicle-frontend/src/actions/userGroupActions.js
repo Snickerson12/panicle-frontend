@@ -36,7 +36,7 @@ export const getUserGroups = (userId) => {
             const resp = await fetch(API)
             const data = await resp.json()
             const filteredUG = data.filter(g => {
-                return g.user_id == userId
+                return g.user_id === userId
             })
             dispatch(fetchUserGroups(filteredUG))
         } catch (error) {

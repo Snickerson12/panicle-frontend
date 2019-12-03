@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Header, Item, Button, Modal, Form } from 'semantic-ui-react';
+import { Header, Item, Button, Modal, Form, Image } from 'semantic-ui-react';
 import {getPost} from '../actions/postActions';
 import { withRouter } from "react-router";
 import { createPendingUser } from '../actions/pendingUserActions';
+import {getPhoto} from '../actions/photoActions';
+import {getSingleGroup} from '../actions/groupActions';
 
 class GroupPage extends React.Component {
     constructor() {
@@ -20,7 +22,9 @@ class GroupPage extends React.Component {
 
     componentDidMount = () => {
         const groupId = this.props.match.params.id
+        this.props.getSingleGroup(groupId)
         this.props.getPost(groupId)
+        this.props.getPhoto(groupId)
     }
 
     handleView = (event) => {
@@ -31,7 +35,6 @@ class GroupPage extends React.Component {
     handlePhotosClick = () => {
         const groupId = this.props.match.params.id
         this.props.history.push(groupId + '/photos')
-        // localhost:3001/group/id/photos
     }
 
     handleSubmit = (event) => {
@@ -62,11 +65,12 @@ class GroupPage extends React.Component {
     }
 
     render() {
-        
-        if(!this.props.group == []) {
-            return this.props.group.map(g => 
+        console.log('group page props', this.props)
+        if(this.props.group[0]) {
+            console.log('group props', this.props.group[0])
+            return (
                 <div>
-                    <Header as='h3' block className='form-header'>{g.name}
+                    <Header as='h3' block className='form-header'>{this.props.group[0].name}
                         <Modal trigger={<Button className="invite-button" basic color='violet'>Invite</Button>}>
                             <Modal.Header>Invite a Member</Modal.Header>
                             <Form className="account-form" onSubmit={this.handleSubmit}>
@@ -82,6 +86,9 @@ class GroupPage extends React.Component {
                     <div className="group-content-container">
                         <div className="photo-container"> 
                             <Header as='h3' block className='photo-header'> Photos </Header>
+                            { this.props.photo.length > 0 &&
+                                <Image src={`http://localhost:3000${this.props.photo.slice(-1)[0].photo_file}`} className='single-photo'/>
+                            }
                             <Button className="account-button" basic color='violet' onClick={this.handlePhotosClick}> View Photos</Button>
                         </div>
 
@@ -103,15 +110,18 @@ class GroupPage extends React.Component {
 const mapState = (state) => {
     return {
         user: state.user,
-        group: state.group,
-        post: state.post
+        group: state.group.single_group,
+        post: state.post,
+        photo: state.photo
     }
 }
 
 const mapDispatch = dispatch => {
     return {
         getPost: (groupId) => dispatch(getPost(groupId)),
-        createPendingUser: (groupId, userEmail) => dispatch(createPendingUser(groupId, userEmail))
+        createPendingUser: (groupId, userEmail) => dispatch(createPendingUser(groupId, userEmail)),
+        getPhoto: (groupId) => dispatch(getPhoto(groupId)),
+        getSingleGroup: (groupId) => dispatch(getSingleGroup(groupId))
     }
 }
 

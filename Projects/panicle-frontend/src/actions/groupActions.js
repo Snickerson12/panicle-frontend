@@ -32,9 +32,7 @@ export const createGroup = (group, user) => {
                 })
             })
             let ug_data = await ug_resp.json()
-            console.log(ug_data)
             dispatch(postUserGroup(ug_data.user_group))
-            console.log(data.group)
             dispatch(postGroup(data.group))
 
         } catch (error) {
@@ -51,13 +49,12 @@ export const getGroup = (user) => {
         try {
             const resp = await fetch(API)
             const data = await resp.json()
-            const filteredGroups = data.filter(group => {
-                let groupName = group.users.map(group => {
+            const filteredGroups = data.filter(g => {
+                let groupName = g.users.map(group => {
                     return group.username
                 })
                 return groupName == user
             })
-            console.log(filteredGroups)
             dispatch(fetchGroup(filteredGroups))
 
         } catch (error) {
@@ -67,7 +64,7 @@ export const getGroup = (user) => {
 }
 
 export const FETCH_SINGLE_GROUP = 'FETCH_SINGLE_GROUP'
-export const fetchSingleGroup = group => ({type: FETCH_SINGLE_GROUP, group})
+export const fetchSingleGroup = single_group => ({type: FETCH_SINGLE_GROUP, single_group})
 
 export const getSingleGroup = (groupId) => {
     return async dispatch => {
