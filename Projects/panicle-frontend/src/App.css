@@ -89,4 +89,220 @@
 
 .form-header {
  text-align: center;
+ height: 9vh
+}
+
+/* user homepage */
+
+.user-page-container {
+  display: grid;
+  margin-top: 1%;
+  margin-left: 2%;
+  margin-right: 2%
+}
+
+.group-container {
+  width: 30vw;
+
+}
+
+.create-group-btn-container {
+  text-align: center;
+}
+
+.create-group-button {
+  width: 25vw;
+}
+
+.group-card {
+  height: 60vh;
+  padding-left: 5%;
+  padding-right: 4%;
+  padding-top: 4%;
+  overflow-y: scroll;
+}
+
+.user-item {
+ display: flex;
+ flex-grow: 0;
+}
+
+.user-card-content {
+  margin-top: 8vh;
+  margin-left: 1vw;
+  font-size: 1.2rem;
+}
+
+.card-text {
+  padding-bottom: 3%
+}
+
+.user-avatar {
+  padding: 5% 0% 0% 5%;
+}
+
+.middle-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-button-container {
+  text-align: center;
+}
+
+.settings-button {
+  width: 35vw;
+}
+
+.settings-back-button.ui.button {
+  display: inline-block;
+  float: left;
+  margin-left: 1%;
+}
+
+.settings-text-area {
+  width: 50vw;
+  height: 10vh
+}
+
+.pending-invite-cards {
+  height: 65vh;
+  padding-left: 5%;
+  padding-top: 2%;
+  overflow-y: scroll;
+  
+}
+
+.invite-card {
+  margin: 3%;
+  display: flex;
+  padding-left: 7%
+}
+
+
+/* Group page */
+
+.group-content-container {
+  display: flex
+}
+
+.photo-header {
+  background: white;
+  text-align: center;
+}
+
+.photo-container {
+  width: 30vw;
+  height: 72vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 1%;
+}
+
+.photo-button {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.single-photo {
+  width: 20vw;
+  margin-left: 15%;
+}
+
+.post-container {
+  height: 75vh;
+  overflow: scroll;
+  border: 1px solid grey; 
+  min-width: 65vw;
+}
+
+.post {
+  width: 65vw;
+  height: 20vh;
+  border-bottom: 1px solid grey;
+  padding: 2%
+}
+
+.plus-container{
+  text-align: center;
+  line-height: 60vh;
+}
+
+.plus {
+  color: lightgray;
+}
+
+/* view post page */
+
+.back-button {
+  margin-top: 2%
+}
+
+.view-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selected-post-container {
+  border: 1px solid grey;
+  margin-top: 2%;
+  min-height: 50vh;
+}
+
+.post-content {
+  margin: 5%;
+}
+
+.parent-comment-container {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw
+}
+
+.invite-button {
+  float: right
+}
+
+/* Photo page */
+
+.photo-button-container{
+  margin-bottom: 1%;
+  margin-top: 1%;
+  text-align: center;
+}
+
+.new-photo-button {
+  margin-bottom: 5%;
+}
+
+.photo-item {
+  height: 40vh;
+}
+
+.photo-caption {
+  width: 25vw;
+}
+
+.modal-image {
+  margin: 0;
+  padding: 0
+}
+
+.ui.modal>.image.content {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-caption {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3%
 }

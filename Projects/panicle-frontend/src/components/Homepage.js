@@ -2,8 +2,13 @@ import React from 'react';
 import HomeInfo from './HomeInfo';
 import image from '../img/homepage-info.jpg';
 import { Button } from 'semantic-ui-react';
+import { withRouter } from "react-router";
 
-const Homepage = () => {
+const Homepage = (props) => {
+
+    const handleSignup = () => {
+        return props.history.push('/signup')
+    }
 
     return(
         <div>
@@ -23,7 +28,7 @@ const Homepage = () => {
                 </div>
             </div>
             <div className="bottom-sign-up">
-                <Button className="account-button" basic color='violet'>
+                <Button className="account-button" basic color='violet' onClick={handleSignup}>
                     Create an Account
                 </Button>
             </div>
@@ -31,4 +36,4 @@ const Homepage = () => {
     )
 }
 
-export default Homepage
+export default withRouter(Homepage)

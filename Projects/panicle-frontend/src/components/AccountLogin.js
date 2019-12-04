@@ -9,9 +9,6 @@ class AccountLogin extends React.Component {
         this.state = {
             username: '',
             password: '',
-            error: false,
-            isLoggedIn: true,
-            user: {}
           }
     }
     
@@ -25,10 +22,13 @@ class AccountLogin extends React.Component {
         event.preventDefault()
         const potentialUser = {username: this.state.username, password: this.state.password}
         this.props.getUser(potentialUser)
-        this.props.history.push('/welcome')
     }
 
     render() {
+        if (this.props.user.user !== undefined) {
+            this.props.history.push('/welcome')
+        }
+
         return (
             <div>
                 <Header as='h3' block className='form-header'>

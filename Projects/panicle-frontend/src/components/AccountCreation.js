@@ -10,6 +10,7 @@ class AccountCreation extends React.Component {
         super()
         this.state = {
             username: '', 
+            email: '',
             location: '',
             bio: '',
             password: '',
@@ -24,12 +25,13 @@ class AccountCreation extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        const newUser = {username: this.state.username, location: this.state.location, bio: this.state.bio, password: this.state.password}
+        const newUser = {username: this.state.username, email: this.state.email, location: this.state.location, bio: this.state.bio, password: this.state.password}
         this.props.createUser(newUser)
         this.props.history.push('/welcome')
     }
 
     render() {
+    
         return (
             <div>
                 <Header as='h3' block className='form-header'>
@@ -39,6 +41,10 @@ class AccountCreation extends React.Component {
                     <Form.Field>
                         <label>Username</label>
                         <input placeholder='username' name="username" onChange={this.handleChange}/>
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Email</label>
+                        <input placeholder='email' name="email" onChange={this.handleChange}/>
                     </Form.Field>
                     <Form.Field>
                         <label>Location</label>
