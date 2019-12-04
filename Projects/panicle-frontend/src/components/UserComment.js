@@ -31,13 +31,11 @@ class UserComment extends React.Component {
         })
     }
 
-    renderComments = (c) => {
-        
+    renderComments = (c) => {        
         return (
             <Comment>
-                <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/elliot.jpg' />
                 <Comment.Content>
-                    <Comment.Author as='a'>{this.props.user.user.username}</Comment.Author>
+                    <Comment.Author as='a'>{c.user.username}</Comment.Author>
                     <Comment.Text>
                         {c.content}
                     </Comment.Text>

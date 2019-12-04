@@ -13,7 +13,7 @@ class ViewPost extends React.Component {
     }
 
     handleClick = () => {
-        const groupId = Object.values(this.props.group[0])[0]
+        const groupId = parseInt(this.props.location.pathname.split('')[7])
         this.props.history.push('/group/'+groupId)
     }
 
@@ -60,7 +60,7 @@ class ViewPost extends React.Component {
 const mapState = (state) => {
     return {
         post: state.post,
-        group: state.group,
+        group: state.group.single_group,
         user: state.user
     }
 }

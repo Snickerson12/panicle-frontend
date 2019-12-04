@@ -63,10 +63,10 @@ class Settings extends React.Component {
                             <label>Bio</label>
                             <input type='textarea' className='settings-text-area' placeholder={this.props.user.user.bio} name='bio' onChange={this.handleChange} />
                         </Form.Field>
-                        <Form.Field>
+                        {/* <Form.Field>
                             <label>Avatar</label>
                             <input type='file' placeholder='avatar' name='avatar' onChange={this.handleChange} />
-                        </Form.Field>
+                        </Form.Field> */}
                         <Button type='submit'>Submit</Button>
                     </Form>
                 </div>

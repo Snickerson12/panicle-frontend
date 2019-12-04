@@ -20,21 +20,23 @@ class PendingInviteCard extends React.Component {
         if (!this.props.pending_user_group == []) 
             {
                 return this.props.pending_user_group.map(g => 
-                    <Card>
-                    <Card.Content>
-                      <Card.Header>{g.group.name}</Card.Header>
-                    </Card.Content>
-                    <Card.Content extra>
-                      <div className='ui two buttons'>
-                        <Button basic color='green' onClick={this.handleAccept} id={g.id}>
-                          Approve
-                        </Button>
-                        <Button basic color='red' onClick={this.handleDelete} id={g.id}>
-                          Decline
-                        </Button>
-                      </div>
-                    </Card.Content>
-                  </Card>
+                    <div className='invite-card'>
+                      <Card>
+                      <Card.Content>
+                        <Card.Header>{g.group.name}</Card.Header>
+                      </Card.Content>
+                      <Card.Content extra>
+                        <div className='ui two buttons'>
+                          <Button basic color='green' onClick={this.handleAccept} id={g.id}>
+                            Approve
+                          </Button>
+                          <Button basic color='red' onClick={this.handleDelete} id={g.id}>
+                            Decline
+                          </Button>
+                        </div>
+                      </Card.Content>
+                    </Card>
+                  </div>
               )  
             } else {return <div>Loading...</div>}
     }

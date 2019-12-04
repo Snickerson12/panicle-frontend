@@ -68,7 +68,9 @@ class UserGroupsDisplay extends React.Component {
                     <Header as='h3' block className='form-header'>
                         Your Groups
                     </Header>
-                    <Button className="account-button" basic color='violet' onClick={this.handleClick}>Create Group</Button>
+                    <div className='create-group-btn-container'>
+                        <Button className="create-group-button" basic color='violet' onClick={this.handleClick}>Create Group</Button>
+                    </div>
                     <div className='group-card'>
                         <GroupCard />
                     </div>

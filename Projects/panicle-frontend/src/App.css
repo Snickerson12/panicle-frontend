@@ -92,16 +92,33 @@
  height: 9vh
 }
 
+/* user homepage */
+
 .user-page-container {
   display: grid;
+  margin-top: 1%;
+  margin-left: 2%;
+  margin-right: 2%
 }
 
 .group-container {
   width: 30vw;
+
+}
+
+.create-group-btn-container {
+  text-align: center;
+}
+
+.create-group-button {
+  width: 25vw;
 }
 
 .group-card {
   height: 60vh;
+  padding-left: 5%;
+  padding-right: 4%;
+  padding-top: 4%;
   overflow-y: scroll;
 }
 
@@ -111,14 +128,30 @@
 }
 
 .user-card-content {
-  margin-top: 10vh;
-  margin-left: 5vw
+  margin-top: 8vh;
+  margin-left: 1vw;
+  font-size: 1.2rem;
+}
+
+.card-text {
+  padding-bottom: 3%
+}
+
+.user-avatar {
+  padding: 5% 0% 0% 5%;
+}
+
+.middle-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-button-container {
+  text-align: center;
 }
 
 .settings-button {
-  width: 50vw;
-  display: flex;
-  justify-content: center;
+  width: 35vw;
 }
 
 .settings-back-button.ui.button {
@@ -131,6 +164,21 @@
   width: 50vw;
   height: 10vh
 }
+
+.pending-invite-cards {
+  height: 65vh;
+  padding-left: 5%;
+  padding-top: 2%;
+  overflow-y: scroll;
+  
+}
+
+.invite-card {
+  margin: 3%;
+  display: flex;
+  padding-left: 7%
+}
+
 
 /* Group page */
 
@@ -159,12 +207,14 @@
 
 .single-photo {
   width: 20vw;
+  margin-left: 15%;
 }
 
 .post-container {
   height: 75vh;
   overflow: scroll;
   border: 1px solid grey; 
+  min-width: 65vw;
 }
 
 .post {
@@ -172,6 +222,15 @@
   height: 20vh;
   border-bottom: 1px solid grey;
   padding: 2%
+}
+
+.plus-container{
+  text-align: center;
+  line-height: 60vh;
+}
+
+.plus {
+  color: lightgray;
 }
 
 /* view post page */
@@ -230,4 +289,20 @@
 
 .photo-caption {
   width: 25vw;
+}
+
+.modal-image {
+  margin: 0;
+  padding: 0
+}
+
+.ui.modal>.image.content {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-caption {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3%
 }

@@ -23,16 +23,18 @@ class PhotoPage extends React.Component {
         this.props.history.push('/group/'+groupId)
     }    
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault()
-        const groupId = this.props.group[0].id
+        const groupId = parseInt(this.props.match.params.id)
         const userId = this.props.user.user.id
         const photoData = new FormData()
         photoData.append('photo[user_id]', userId)
         photoData.append('photo[group_id]', groupId)
         photoData.append('photo[caption]', this.state.caption)
         photoData.append('photo[photo_file]', this.state.photo_file)
-        this.props.uploadPhoto(photoData)
+        await this.props.uploadPhoto(photoData)
+        await this.props.getPhoto(groupId)
+        this.props.history.push('/group/'+groupId + '/photos')
     }
 
     handleChange = (event) => {
@@ -51,7 +53,14 @@ class PhotoPage extends React.Component {
         console.log('photo page photo', photo)
         return (
             <Grid.Column>
-                <Image src={`http://localhost:3000${photo.photo_file}`} className='photo-item'/>
+                <Modal trigger={<Button><Image src={`http://localhost:3000${photo.photo_file}`} className='photo-item'/></Button>}>
+                    <Modal.Content image className="modal-image">
+                        <Image wrapped size='large' src={`http://localhost:3000${photo.photo_file}`}/>
+                    </Modal.Content>
+                    <Modal.Description className='modal-caption'>
+                        {photo.caption}
+                    </Modal.Description>
+                </Modal>
                 <Item.Description className='photo-caption'>
                     {photo.caption}
                 </Item.Description>
@@ -60,40 +69,69 @@ class PhotoPage extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                <Header as='h3' block className='form-header'>
-                    Photos
-                </Header> 
-                <div className='photo-button-container'>
-                    <Button className="photo-buttons" basic color='violet' onClick={this.handleClick}>Back</Button>
-                    <Modal trigger={<Button className="photo-buttons" basic color='violet'>Add Photo</Button>}>
-                        <Modal.Header>Upload a Photo</Modal.Header>
-                        <Form className="account-form" onSubmit={this.handleSubmit}>
-                        <Form.Field>
-                            <label>Photo: </label>
-                            <input type='file' name="photo" onChange={this.handleUpload} />
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Caption: </label>
-                            <textarea placeholder='caption' name="caption" onChange={this.handleChange} />
-                        </Form.Field>
-                        <Button type='submit'>Submit</Button>
-                        </Form>
-                    </Modal>
+        console.log(this.props.photo)
+        if(this.props.photo.length > 0) {
+            return (
+                
+                <div>
+                    <Header as='h3' block className='form-header'>
+                        Photos
+                    </Header> 
+                    <div className='photo-button-container'>
+                        <Button className="photo-buttons" basic color='violet' onClick={this.handleClick}>Back</Button>
+                        <Modal trigger={<Button className="photo-buttons" basic color='violet'>Add Photo</Button>}>
+                            <Modal.Header>Upload a Photo</Modal.Header>
+                            <Form className="account-form" onSubmit={this.handleSubmit}>
+                            <Form.Field>
+                                <label>Photo: </label>
+                                <input type='file' name="photo" onChange={this.handleUpload} />
+                            </Form.Field>
+                            <Form.Field>
+                                <label>Caption: </label>
+                                <textarea placeholder='caption' name="caption" onChange={this.handleChange} />
+                            </Form.Field>
+                            <Button type='submit'>Submit</Button>
+                            </Form>
+                        </Modal>
+                    </div>
+                    <Grid container columns={3}>
+                        {this.props.photo.map((photo, index) => this.renderImages(photo, index))}
+                    </Grid>
                 </div>
-                <Grid container columns={3}>
-                    {this.props.photo.map((photo, index) => this.renderImages(photo, index))}
-                </Grid>
-            </div>
-        )
+            ) 
+        } else {
+            return (
+                <div>
+                    <Header as='h3' block className='form-header'>
+                    Photos
+                    </Header> 
+                    <div className='photo-button-container'>
+                        <Button className="photo-buttons" basic color='violet' onClick={this.handleClick}>Back</Button>
+                        <Modal trigger={<Button className="photo-buttons" basic color='violet'>Add Photo</Button>}>
+                            <Modal.Header>Upload a Photo</Modal.Header>
+                            <Form className="account-form" onSubmit={this.handleSubmit}>
+                            <Form.Field>
+                                <label>Photo: </label>
+                                <input type='file' name="photo" onChange={this.handleUpload} />
+                            </Form.Field>
+                            <Form.Field>
+                                <label>Caption: </label>
+                                <textarea placeholder='caption' name="caption" onChange={this.handleChange} />
+                            </Form.Field>
+                            <Button type='submit'>Submit</Button>
+                            </Form>
+                        </Modal>
+                    </div>
+                </div>
+                )
+        }
     }
 }
 
 
 const mapState = (state) => {
     return {
-        group: state.group,
+        group: state.group.single_group,
         user: state.user,
         photo: state.photo
     }

@@ -6,6 +6,7 @@ import { withRouter } from "react-router";
 import { createPendingUser } from '../actions/pendingUserActions';
 import {getPhoto} from '../actions/photoActions';
 import {getSingleGroup} from '../actions/groupActions';
+import {Icon} from 'semantic-ui-react'
 
 class GroupPage extends React.Component {
     constructor() {
@@ -17,7 +18,8 @@ class GroupPage extends React.Component {
     
     handleClick = (event) => {
         event.preventDefault()
-        this.props.history.push('/newPost')
+        const groupId = this.props.match.params.id
+        this.props.history.push(groupId + '/newPost')
     }
 
     componentDidMount = () => {
@@ -29,7 +31,8 @@ class GroupPage extends React.Component {
 
     handleView = (event) => {
         const postId = event.target.id
-        this.props.history.push('/post/'+ (postId))
+        const groupId = this.props.match.params.id
+        this.props.history.push('/group/' + groupId + '/post/'+ (postId))
     }
 
     handlePhotosClick = () => {
@@ -96,7 +99,12 @@ class GroupPage extends React.Component {
                             <Header as='h3' block className='form-header'>
                                 <Button className="photo-button" basic color='violet' onClick={this.handleClick}> Create Post</Button>
                             </Header>
-                            {this.props.post.map((p, index) => this.renderPost(p, index))}
+                            { this.props.post.length > 0 
+                            ?
+                                this.props.post.map((p, index) => this.renderPost(p, index))
+                            :
+                                <div className='plus-container' onClick={this.handleClick}><Icon plus className='plus' size='massive'/></div>
+                            }
                         </div>
                     </div> 
                 </div>

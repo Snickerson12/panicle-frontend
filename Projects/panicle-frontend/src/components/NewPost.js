@@ -14,7 +14,7 @@ class NewPost extends React.Component {
     handleSubmit = async (event) => {
         event.preventDefault()
         const user = this.props.user.user.id
-        const groupId = Object.values(this.props.group[0])[0]
+        const groupId = parseInt(this.props.location.pathname.split('')[7])
         const postContent = {content: this.state.content, user_id: user, group_id: groupId}
         await this.props.newPost(postContent)
         this.props.history.push('./group/'+ `${groupId}`)
@@ -27,8 +27,8 @@ class NewPost extends React.Component {
     }
 
     handleClick = () => {
-        const groupId = Object.values(this.props.group[0])[0]
-        this.props.history.push('./group/'+ `${groupId}`)
+        const groupId = parseInt(this.props.location.pathname.split('')[7])
+        this.props.history.push('/group/' + groupId)
     }
 
     render() {
@@ -53,7 +53,7 @@ class NewPost extends React.Component {
 const mapState = (state) => {
     return {
         user: state.user,
-        group: state.group
+        group: state.group.single_group
     }
 }
 

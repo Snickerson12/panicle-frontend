@@ -40,8 +40,8 @@ class App extends React.Component {
             <Route exact path="/welcome" component={UserHomepage}/>
             <Route exact path='/settings' component={Settings}/>
             <Route exact path='/group/:id' component={GroupPage}/>
-            <Route exact path='/newPost' component={NewPost}/>
-            <Route exact path='/post/:id' component={ViewPost}/>
+            <Route exact path='/group/:id/newPost' component={NewPost}/>
+            <Route exact path='/group/:id/post/:id' component={ViewPost}/>
             <Route exact path='/group/:id/photos' component={PhotoPage}/>
         </div>
       </Router>

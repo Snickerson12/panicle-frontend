@@ -7,7 +7,9 @@ const UserInvitesDisplay = () => {
     return (
         <div>
             <Header as='h3' block className='form-header'> Pending Group Invites </Header>
-            <PendingInviteCard>Pending Invites</PendingInviteCard>
+            <div className='pending-invite-cards'>
+                <PendingInviteCard>Pending Invites</PendingInviteCard>
+            </div>
         </div>
     )
 }

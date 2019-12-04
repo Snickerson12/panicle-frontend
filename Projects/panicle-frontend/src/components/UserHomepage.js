@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import UserGroupsDisplay from './UserGroupsDisplay';
 import UserCard from './UserCard';
-import { Grid, Segment, Button} from 'semantic-ui-react';
+import { Grid, Segment, Button, Header} from 'semantic-ui-react';
 import UserInvitesDisplay from './UserInvitesDisplay';
 
 
@@ -38,16 +38,20 @@ class UserHomepage extends React.Component {
                             <Grid.Row stretched>
                             < UserGroupsDisplay/>
                             <Grid.Column width={6}>
-                                <Segment>
+                                <Segment className='middle-section'>
+                                    <Header as='h3' block className='form-header'> User Information </Header>
                                     <UserCard />
                                 </Segment>
+                                <div className='settings-button-container'>
+                                    <Button className="settings-button" basic color='violet' onClick={this.handleSettings}>Settings</Button>
+                                </div>
                             </Grid.Column>
                             <Grid.Column>
                                 <UserInvitesDisplay/>
                             </Grid.Column>
                             </Grid.Row>
                         </Grid>
-                        <Button className="settings-button" basic color='violet' onClick={this.handleSettings}>Settings</Button>
+                        
                     </div>
                  )
              }
