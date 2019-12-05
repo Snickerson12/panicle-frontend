@@ -60,7 +60,7 @@ class GroupPage extends React.Component {
                     <Item.Header>post {index + 1}</Item.Header>
                     <Item.Description>{p.content}</Item.Description>
                     <Item.Extra>
-                    <Button floated='right' onClick={this.handleView} id={p.id}>View Post</Button>
+                    <Button floated='right' onClick={this.handleView} basic color='violet' id={p.id}>View Post</Button>
                     </Item.Extra>
                 </Item.Content>
             </Item>
@@ -97,7 +97,7 @@ class GroupPage extends React.Component {
 
                         <div className="post-container">
                             <Header as='h3' block className='form-header'>
-                                <Button className="photo-button" basic color='violet' onClick={this.handleClick}> Create Post</Button>
+                                <Button className="photo-button" color='violet' onClick={this.handleClick}> Create Post</Button>
                             </Header>
                             { this.props.post.length > 0 
                             ?

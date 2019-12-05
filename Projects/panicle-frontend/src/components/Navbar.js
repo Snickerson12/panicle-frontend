@@ -26,7 +26,6 @@ class Navbar extends React.Component {
     handleDirect = async (event) => {
         event.preventDefault()
         const user = this.props.user.user.username
-        console.log(user)
         await this.props.getGroup(user)
         this.props.history.push('/welcome')
     }
@@ -53,7 +52,7 @@ class Navbar extends React.Component {
             <div>
                 <div className="ui secondary pointing menu">
                     <a href='/'>
-                        <img src='./logo-grey.png' alt='logo'/>
+                        <img src='/logo-grey.png' alt='logo'/>
                     </a>
                     {loginButtons}
                 </div>

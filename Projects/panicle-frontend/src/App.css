@@ -11,6 +11,10 @@
   height: 5vh;
 }
 
+.right.menu {
+  padding-top: 1%
+}
+
 /* general home page before login */
 
 .homepage-image {

@@ -11,9 +11,9 @@ class PendingInviteCard extends React.Component {
         this.props.removePendingInvite(pendingInviteId)
     }
 
-    handleAccept = async (event) => {
+    handleAccept = (event) => {
         const pendingInviteId = event.target.id
-        await this.props.getSinglePending(pendingInviteId)
+        this.props.getSinglePending(pendingInviteId)
     }
 
     render() {
