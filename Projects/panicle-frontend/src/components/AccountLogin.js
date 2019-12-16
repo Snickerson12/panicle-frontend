@@ -33,7 +33,7 @@ class AccountLogin extends React.Component {
             <div>
                 <Header as='h3' block className='form-header'>
                     Login
-                </Header>            
+                </Header>         
                 <Form className="account-form" onSubmit={this.handleSubmit}>
                     <Form.Field>
                         <label>Username</label>

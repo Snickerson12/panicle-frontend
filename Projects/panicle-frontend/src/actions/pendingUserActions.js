@@ -23,7 +23,6 @@ export const createPendingUser = (groupId, userEmail) => {
             const group = parseInt(groupId)
             const pendingUserId = filteredUsers[0].id
             const pendingUser = {group_id: group, user_id: pendingUserId}
-            console.log(pendingUser)
             const response = await fetch(PENDING_USER_API, {
                 method: 'POST',
                 headers: {
@@ -50,11 +49,9 @@ export const getPendingUsers = (userId) => {
         try {
             const resp = await fetch(PENDING_USER_API)
             const data = await resp.json()
-            console.log('get pending user', data)
             const filteredPendingUser = data.filter(user => {
                 return user.user_id === userId
             })
-            console.log(filteredPendingUser)
             dispatch(fetchPendingUser(filteredPendingUser))
         } catch (error) {
             console.error('Error fetching', error)

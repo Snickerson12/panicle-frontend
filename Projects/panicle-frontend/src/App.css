@@ -11,6 +11,10 @@
   height: 5vh;
 }
 
+.right.menu {
+  padding-top: 1%
+}
+
 /* general home page before login */
 
 .homepage-image {
@@ -134,7 +138,7 @@
 }
 
 .card-text {
-  padding-bottom: 3%
+  padding-bottom: 6%
 }
 
 .user-avatar {

@@ -3,7 +3,8 @@ import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { logoutUser } from '../actions/userActions';
-import {getGroup} from '../actions/groupActions'
+import {getGroup} from '../actions/groupActions';
+import {getPendingUsers} from '../actions/pendingUserActions';
 
 class Navbar extends React.Component {
 
@@ -26,8 +27,9 @@ class Navbar extends React.Component {
     handleDirect = async (event) => {
         event.preventDefault()
         const user = this.props.user.user.username
-        console.log(user)
+        const userId = this.props.user.user.id
         await this.props.getGroup(user)
+        await this.props.getPendingUsers(userId)
         this.props.history.push('/welcome')
     }
 
@@ -53,7 +55,7 @@ class Navbar extends React.Component {
             <div>
                 <div className="ui secondary pointing menu">
                     <a href='/'>
-                        <img src='./logo-grey.png' alt='logo'/>
+                        <img src='/logo-grey.png' alt='logo'/>
                     </a>
                     {loginButtons}
                 </div>
@@ -72,7 +74,8 @@ const mapState = (state) => {
 const mapDispatch = dispatch => {
     return {
         logoutUser: (currentUser) => dispatch(logoutUser(currentUser)),
-        getGroup: (user) => dispatch(getGroup(user))
+        getGroup: (user) => dispatch(getGroup(user)),
+        getPendingUsers: (userId) => dispatch(getPendingUsers(userId))
     }
 }
 

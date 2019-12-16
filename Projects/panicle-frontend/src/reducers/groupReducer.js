@@ -10,7 +10,7 @@ const groupReducer = (state = initState, action) => {
     case POST_GROUP:
         return {...state, group: [...state.group, action.group]}
     case FETCH_GROUP:
-        return {...state, group: action.grßup}
+        return {...state, group: action.group}
     case FETCH_SINGLE_GROUP:
         return {...state, single_group: action.single_group}
     default:

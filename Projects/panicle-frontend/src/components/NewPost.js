@@ -17,7 +17,7 @@ class NewPost extends React.Component {
         const groupId = parseInt(this.props.location.pathname.split('')[7])
         const postContent = {content: this.state.content, user_id: user, group_id: groupId}
         await this.props.newPost(postContent)
-        this.props.history.push('./group/'+ `${groupId}`)
+        this.props.history.push('/group/' + groupId)
     }
 
     handleChange = (event) => {

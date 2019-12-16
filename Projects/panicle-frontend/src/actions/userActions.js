@@ -1,6 +1,7 @@
 import {getGroup} from './groupActions';
 import {getPendingUsers} from './pendingUserActions';
 import {getUserGroups} from './userGroupActions';
+import React from 'react'
 
 const API = 'http://localhost:3000'
 
@@ -73,9 +74,6 @@ export const loggedIn = () => {
             dispatch(postUser(data))
             const user = data.user
             dispatch(getGroup(user.username))
-            // if (this.props.match.path !== "/group/:id") {
-            //     dispatch(getGroup(user.username))
-            // } 
             const userId = data.user.id
             dispatch(getPendingUsers(userId))
             dispatch(getUserGroups(userId))
